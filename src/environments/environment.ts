@@ -15,7 +15,7 @@ export const environment = {
   fineractPlatformTenantIds: window['env']['fineractPlatformTenantIds'] || 'default',
   // For connecting to others servers running elsewhere update the base API URL
   baseApiUrls: window['env']['fineractApiUrls'] ||
-    'https://dev.mifos.io,https://demo.mifos.io,https://qa.mifos.io,https://staging.mifos.io,https://mobile.mifos.io,https://demo.fineract.dev,https://localhost:8443',
+    'https://dev.mifos.io,https://demo.mifos.io,https://qa.mifos.io,https://staging.mifos.io,https://mobile.mifos.io,https://demo.fineract.dev,https://localhost:8443,https://webapp.ps.mifos.io',
   // For connecting to server running elsewhere set the base API URL
   baseApiUrl: window['env']['baseApiUrl'] || 'https://demo.fineract.dev',
   allowServerSwitch: env.allow_switching_backend_instance,
@@ -28,7 +28,12 @@ export const environment = {
   },
   defaultLanguage: window['env']['defaultLanguage'] || 'en-US',
   supportedLanguages: window['env']['supportedLanguages'] || 'en-US,es-MX,fr-FR',
-  preloadClients: window['env']['preloadClients'] || true
+  preloadClients: window['env']['preloadClients'] || true,
+  superset: {
+    enabled: window['env']['supersetEnabled'] || true,
+    serverUrl: window['env']['supersetUrl'] || '',
+    token: window['env']['supersetToken'] || '',
+  }
 };
 
 // Server URL

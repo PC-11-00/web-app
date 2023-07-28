@@ -16,4 +16,8 @@
   window["env"]["supportedLanguages"] = '$MIFOS_SUPPORTED_LANGUAGES';
 
   window['env']['preloadClients'] = '$MIFOS_PRELOAD_CLIENTS';
+  window['env']['supersetEnabled'] = '$MIFOS_SUPERSET_ENABLED';
+  window['env']['supersetUrl'] = '$MIFOS_SUPERSET_URL';
+  window['env']['supersetToken'] = '$MIFOS_SUPERSET_TOKEN';
+  
 })(this);

@@ -1,6 +1,7 @@
 /** Angular Imports */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'environments/environment';
 
 /**
  * Dashboard component.
@@ -22,8 +23,13 @@ export class DashboardComponent implements OnInit {
   /**
    * Gets user activities from local storage.
    */
+  // supersetEnable:false;
+
   constructor(private router: Router) {
     this.userActivity = JSON.parse(localStorage.getItem('mifosXLocation'));
+    // console.log(environment.superset);
+    // this.supersetEnable = environment.superset.enabled;
+    // console.log(this.supersetEnable);
   }
 
   ngOnInit() {

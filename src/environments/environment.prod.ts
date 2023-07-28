@@ -23,7 +23,12 @@ export const environment = {
   },
   defaultLanguage: window['env']['defaultLanguage'] || 'en-US',
   supportedLanguages: window['env']['supportedLanguages'] || 'en-US,es-MX,fr-FR',
-  preloadClients: window['env']['preloadClients'] || true
+  preloadClients: window['env']['preloadClients'] || true,
+  superset: {
+    enabled: window['env']['supersetEnabled'] || false,
+    serverUrl: window['env']['supersetUrl'] || '',
+    token: window['env']['supersetToken'] || '',
+  }
 };
 
 // Server URL
