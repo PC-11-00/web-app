@@ -23,9 +23,11 @@ export class DatatableTabsComponent {
    */
   constructor(private route: ActivatedRoute) {
     this.entityId = this.route.parent.parent.snapshot.paramMap.get('savingAccountId');
-
+    console.log(this.entityId);
     this.route.data.subscribe((data: { savingsDatatable: any }) => {
+      console.log(data);
       this.entityDatatable = data.savingsDatatable;
+      console.log("hi from datatable: ",data);
       this.multiRowDatatableFlag = this.entityDatatable.columnHeaders[0].columnName === 'id' ? true : false;
     });
   }

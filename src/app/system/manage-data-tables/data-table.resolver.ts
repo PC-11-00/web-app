@@ -26,6 +26,7 @@ export class DataTableResolver implements Resolve<Object> {
    */
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     const dataTableName = route.paramMap.get('datatableName');
+    console.log("Hi ffrom datable resolver");
     return this.systemService.getDataTable(dataTableName);
   }
 

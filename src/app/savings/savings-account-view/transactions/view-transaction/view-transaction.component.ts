@@ -25,9 +25,17 @@ export class ViewTransactionComponent {
 
   /** Transaction data. */
   transactionData: any;
-
-  accountId: string;
-
+  /** Is Editable */
+  // allowEdition = true;
+  accountId: any;
+  /** Savings Data Tables */
+  transactionDatatables: any;
+  entityId: string;
+  /** Savings Datatable */
+  entityDatatable: any;
+  /** Multi Row Datatable Flag */
+  multiRowDatatableFlag: boolean;
+  isActive:false;
   /**
    * Retrieves the Transaction data from `resolve`.
    * @param {SavingsService} savingsService Savings Service
@@ -43,10 +51,30 @@ export class ViewTransactionComponent {
               private router: Router,
               public dialog: MatDialog,
               private settingsService: SettingsService) {
-    this.route.data.subscribe((data: { savingsAccountTransaction: any }) => {
-      this.accountId = this.route.snapshot.params['savingAccountId'];
+    this.route.data.subscribe((data: { savingsAccountTransaction: any,transactionDatatables:any}) => {
+      console.log(data);
+      this.accountId = this.route.snapshot.params['id'];
+      console.log("accountid: ",this.accountId);
       this.transactionData = data.savingsAccountTransaction;
+      this.transactionDatatables = data.transactionDatatables;
+      console.log("Output of Transaction Datatable: ",this.transactionDatatables);
+      this.entityId = data.savingsAccountTransaction.id;
+      console.log(this.entityId);
+      this.entityDatatable = data.transactionDatatables;
+      // this.multiRowDatatableFlag = this.entityDatatable.columnHeaders[0].columnName === 'id' ? true : false;
+      console.log("Hi from View Transaction",this.transactionData);
+      // this.allowEdition = !this.transactionData.manuallyReversed && !this.allowTransactionEdition(this.accountId);
     });
+  }
+
+
+  /**
+   * Allow edit, undo and chargeback actions
+   */
+  allowTransactionEdition(transactionType: number): boolean {
+    return (transactionType === 20
+      || transactionType === 21 || transactionType === 22
+      || transactionType === 23);
   }
 
   /**

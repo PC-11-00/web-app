@@ -24,6 +24,7 @@ export class ManageDataTablesResolver implements Resolve<Object> {
    * @returns {Observable<any>}
    */
   resolve(): Observable<any> {
+    console.log("Hi ffrom manage datable resolver");
     return this.systemService.getDataTables();
   }
 
