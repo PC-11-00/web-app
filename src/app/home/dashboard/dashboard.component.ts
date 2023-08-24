@@ -19,17 +19,16 @@ export class DashboardComponent implements OnInit {
   recentActivities: string[];
   /** Array of most frequent user activities */
   frequentActivities: string[];
+  /** To enable superset from environment  */
+  supersetEnable: false;
 
   /**
    * Gets user activities from local storage.
    */
-  // supersetEnable:false;
 
   constructor(private router: Router) {
     this.userActivity = JSON.parse(localStorage.getItem('mifosXLocation'));
-    // console.log(environment.superset);
-    // this.supersetEnable = environment.superset.enabled;
-    // console.log(this.supersetEnable);
+    this.supersetEnable = environment.superset.enabled;
   }
 
   ngOnInit() {
@@ -59,8 +58,8 @@ export class DashboardComponent implements OnInit {
    * Returns top eight frequent activities.
    */
   getFrequentActivities() {
-    const frequencyCounts: any  = {};
-    let index  = this.userActivity.length;
+    const frequencyCounts: any = {};
+    let index = this.userActivity.length;
     while (index) {
       frequencyCounts[this.userActivity[--index]] = (frequencyCounts[this.userActivity[index]] || 0) + 1;
     }

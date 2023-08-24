@@ -1,12 +1,11 @@
 /** Angular Imports */
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-
+import { environment } from '../../../environments/environment';
 /** rxjs Imports */
 import { Observable } from 'rxjs';
 
 /** Custom Imports */
-import { environment } from '../../../environments/environment';
 import { SettingsService } from 'app/settings/settings.service';
 
 /** Http request (default) options headers. */
@@ -27,7 +26,7 @@ const twoFactorAccessTokenHeader = 'Fineract-Platform-TFA-Token';
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
 
-  constructor(private settingsService: SettingsService) {}
+  constructor(private settingsService: SettingsService) { }
 
   /**
    * Intercepts a Http request and sets the request headers.
@@ -36,7 +35,12 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     if (this.settingsService.tenantIdentifier) {
       httpOptions.headers['Fineract-Platform-TenantId'] = this.settingsService.tenantIdentifier;
     }
-    request = request.clone({ setHeaders: httpOptions.headers });
+    /**
+     * This is made because we added apache superset and in superset we needed to send request to superset backend(localhost:8088) 
+     */
+    if (request.url.includes("fineract-provider")) {
+      request = request.clone({ setHeaders: httpOptions.headers });
+    }
     return next.handle(request);
   }
 
