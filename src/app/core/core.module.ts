@@ -21,7 +21,7 @@ import { ApiPrefixInterceptor } from './http/api-prefix.interceptor';
 import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
 import { CacheInterceptor } from './http/cache.interceptor';
 import { AuthenticationInterceptor } from './authentication/authentication.interceptor';
-
+import { MakerCheckerInterceptor } from './http/maker-checker.interceptor';
 /** Custom Strategies */
 import { RouteReusableStrategy } from './route/route-reusable-strategy';
 
@@ -69,6 +69,7 @@ import { ContentComponent } from './shell/content/content.component';
     },
     HttpCacheService,
     ApiPrefixInterceptor,
+    MakerCheckerInterceptor,
     ErrorHandlerInterceptor,
     CacheInterceptor,
     {

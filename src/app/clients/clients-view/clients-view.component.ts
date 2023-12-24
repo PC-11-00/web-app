@@ -45,6 +45,7 @@ export class ClientsViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("It was called");
     this.clientsService.getClientProfileImage(this.clientViewData.id).subscribe(
       (base64Image: any) => {
         this.clientImage = this._sanitizer.bypassSecurityTrustResourceUrl(base64Image);

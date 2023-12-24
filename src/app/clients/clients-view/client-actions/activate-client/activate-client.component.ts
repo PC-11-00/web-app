@@ -36,11 +36,11 @@ export class ActivateClientComponent implements OnInit {
    * @param {SettingsService} settingsService Settings Service
    */
   constructor(private formBuilder: UntypedFormBuilder,
-              private clientsService: ClientsService,
-              private dateUtils: Dates,
-              private route: ActivatedRoute,
-              private router: Router,
-              private settingsService: SettingsService) {
+    private clientsService: ClientsService,
+    private dateUtils: Dates,
+    private route: ActivatedRoute,
+    private router: Router,
+    private settingsService: SettingsService) {
     this.clientId = this.route.parent.snapshot.params['clientId'];
   }
 
@@ -78,8 +78,13 @@ export class ActivateClientComponent implements OnInit {
       dateFormat,
       locale
     };
-    this.clientsService.executeClientCommand(this.clientId, 'activate', data).subscribe(() => {
+    this.clientsService.executeClientCommand(this.clientId, 'activate', data).subscribe((res: any) => {
+      //   console.log("Hi it is in subscribe");
+      console.log("Resp from activate-client- component", res);
+      if (!res.commandId) {
       this.router.navigate(['../../'], { relativeTo: this.route });
+      }
+
     });
   }
 

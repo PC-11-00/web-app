@@ -1,0 +1,17 @@
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="row wrap">
+                <h2 class="mat-h2" fxFlexFill> {{'Waiting For Checker Approval' | translate}} </h2>
+                <h3 class="mat-h3" fxFlexFill> {{'The action is created and waiting for checker approval.'}}</h3>
+                <h3 class="mat-h3" fxFlexFill> {{'Click on details to view the details of created action.'}}</h3>
+
+                <button mat-raised-button color="primary" (click)="details()">
+                    {{'labels.heading.Details' | translate}}
+                </button>
+            </div>
+
+
+        </mat-card-content>
+    </mat-card>
+</div>
